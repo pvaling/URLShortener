@@ -1,0 +1,38 @@
+POST {{host}}:{{port}}/urls/
+Content-Type: application/json
+
+{"url": "https://revolut.com"}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+    client.global.set('last_short', response.body.short)
+%}
+
+###
+// @no-redirect
+GET {{host}}:{{port}}/urls/{{last_short}}
+Accept: application/json
+
+###
+# @name = ProcessTinyURL
+// @no-redirect
+GET {{host}}:{{port}}/tiny/{{url_id}}
+Accept: application/json
+
+###
+# @name = GetShortLink
+POST {{host}}:{{port}}/shorten
+Content-Type: application/json
+
+{"url": "https://yandex2.ru"}
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+    client.global.set('url_id', response.body.url)
+%}
+
+
