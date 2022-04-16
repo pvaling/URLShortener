@@ -4,6 +4,10 @@ import uvicorn
 from fastapi import Depends, FastAPI, HTTPException
 from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
+from starlette.requests import Request
+from starlette.responses import HTMLResponse
+from starlette.staticfiles import StaticFiles
+from starlette.templating import Jinja2Templates
 
 from sql_app import crud, models, schemas
 from main import InMemoryRepository, SQLRepository, URLShortener, URL
@@ -32,11 +36,18 @@ class LongUrl(BaseModel):
 class ShortUrl(BaseModel):
     url: str
 
+templates = Jinja2Templates(directory="ui")
+
+
+@app.get("/", response_class=HTMLResponse)
+async def read_item(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
 
 @app.post('/shorten')
 def shorten(item: LongUrl, shortener=Depends(get_shortener)) -> ShortUrl:
     short_url = shortener.zip(url=URL(urlstr=item.url))
-    short = ShortUrl(url=short_url)
+    short = ShortUrl(url='tiny/' + short_url)
     return short
 
 
