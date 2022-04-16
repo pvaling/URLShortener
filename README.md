@@ -13,10 +13,11 @@ For coding practice
 - PyCharm HTTP client examples
 - Written with Fast API and SQLAlchemy
 - Object-oriented design of Shortener
+- UI
 - Dockerfile
 
 ## Todo
-- UI
+
 - Kubernetes
 - Terraform for Yandex cloud
 - InMemory Cache
