@@ -33,7 +33,7 @@ uvicorn --port 8000 app:app
 ## Docker build
 
 ```shell
-docker build -f docker/backend.Dockerfile --tag shortener-backend .
+docker build -f docker/backend.Dockerfile --tag pvaling/moon:1.0 .
 ```
 
 ```shell

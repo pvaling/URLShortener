@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: moon-deployment
+  labels:
+    app: moon
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: moon
+  template:
+    metadata:
+      labels:
+        app: moon
+    spec:
+      containers:
+      - name: moon
+        image: pvaling/moon:1.0
+        ports:
+        - containerPort: 8080

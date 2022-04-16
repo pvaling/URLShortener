@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: moon-svc-lb
+spec:
+  ports:
+  - port: 81
+    name: plaintext2
+    targetPort: 8080
+  selector:
+    app: moon
+  type: LoadBalancer

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: moon-service
+spec:
+  selector:
+    app: moon
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
