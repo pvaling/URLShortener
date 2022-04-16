@@ -22,7 +22,7 @@ For coding practice
 - Terraform for Yandex cloud
 - InMemory Cache
 - Split tables for same url collapse (storage space optimization)
-
+- Load Emulator
 
 ## Run
 
