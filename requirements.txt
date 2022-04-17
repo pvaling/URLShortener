@@ -8,6 +8,7 @@ httptools==0.4.0
 idna==3.3
 Jinja2==3.1.1
 MarkupSafe==2.1.1
+psycopg2-binary==2.9.3
 pydantic==1.9.0
 python-dotenv==0.20.0
 PyYAML==6.0
@@ -15,7 +16,7 @@ singleton==0.1.0
 sniffio==1.2.0
 SQLAlchemy==1.4.35
 starlette==0.17.1
-typing-extensions==4.1.1
+typing_extensions==4.1.1
 uvicorn==0.17.6
 uvloop==0.16.0
 watchgod==0.8.2

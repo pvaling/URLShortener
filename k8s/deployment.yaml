@@ -5,7 +5,7 @@ metadata:
   labels:
     app: moon
 spec:
-  replicas: 1
+  replicas: 4
   selector:
     matchLabels:
       app: moon
@@ -16,6 +16,37 @@ spec:
     spec:
       containers:
       - name: moon
-        image: pvaling/moon:1.0
+        image: pvaling/moon:1.5
         ports:
         - containerPort: 8080
+        env:
+          # Define the environment variable
+          - name: DB_URL
+            valueFrom:
+              configMapKeyRef:
+                # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+                name: shortener-config
+                # Specify the key associated with the value
+                key: db_url
+          - name: DB_PORT
+            valueFrom:
+              configMapKeyRef:
+                # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+                name: shortener-config
+                # Specify the key associated with the value
+                key: db_port
+
+          - name: DB_USER
+            valueFrom:
+              configMapKeyRef:
+                # The ConfigMap containing the value you want to assign to SPECIAL_LEVEL_KEY
+                name: shortener-config
+                # Specify the key associated with the value
+                key: db_user
+
+          - name: DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: shortener-db-creds
+                key: password
+

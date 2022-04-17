@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shortener-config
+data:
+  # property-like keys; each key maps to a simple value
+  db_url: "rc1b-o4l9xyl2tr0d0yor.mdb.yandexcloud.net"
+  db_port: "6432"
+  db_user: "user1"
+  db_name: "shortener"

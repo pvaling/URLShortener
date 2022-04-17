@@ -7,6 +7,7 @@ COPY app.py .
 COPY main.py .
 COPY sql_app sql_app
 COPY ui ui
+COPY yc_resources yc_resources
 EXPOSE 8080
 
 CMD ["uvicorn", "--host", "0.0.0.0", "--port", "8080", "app:app"]
